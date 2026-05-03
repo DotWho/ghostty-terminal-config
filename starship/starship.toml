@@ -1,0 +1,138 @@
+# ==============================================================================
+# Starship 彩虹条配置（椭圆 + 箭头风格）
+# ==============================================================================
+# 每个色块左侧圆角开头，右侧箭头过渡，最后一个色块右侧圆角收尾
+# 配色基于 Catppuccin Mocha 色系，与 Ghostty 主题一致
+
+format = """
+[](fg:maroon)$os$username[](bg:peach fg:maroon)$directory[](bg:green fg:peach)$git_branch$git_status[](bg:blue fg:green)$nodejs$python$rust$golang$java[](bg:lavender fg:blue)$time[](fg:lavender)\n$character"""
+
+# 右侧提示符显示命令耗时
+right_format = """$cmd_duration"""
+
+# 调色板
+palette = "catppuccin_mocha"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+# ==============================================================================
+# 苹果图标 + 用户名（玫红色椭圆，彩虹条最左侧）
+# ==============================================================================
+[os]
+disabled = false
+format = "[  ](bg:maroon fg:base)"
+style = "bg:maroon fg:base"
+
+[os.symbols]
+Macos = " "
+
+[username]
+show_always = true
+format = "[$user ](bg:maroon fg:base)"
+style_user = "bg:maroon fg:base"
+
+# ==============================================================================
+# 目录（橙色椭圆）
+# ==============================================================================
+[directory]
+format = "[ $path ]($style)"
+style = "bg:peach fg:base"
+truncation_length = 3
+
+[directory.substitutions]
+"Documents" = "\U000f0219 "
+"Downloads" = " "
+"Projects" = " "
+"Desktop" = " "
+
+# ==============================================================================
+# Git 分支 + 状态（绿色椭圆）
+# ==============================================================================
+# 不在 git 仓库时此色块自动隐藏
+[git_branch]
+format = "[  $branch ]($style)"
+symbol = " "
+style = "bg:green fg:base"
+
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+style = "bg:green fg:base"
+
+# ==============================================================================
+# 语言版本（蓝色椭圆）
+# ==============================================================================
+# 仅在检测到对应项目时才显示
+[nodejs]
+format = "[  $version ]($style)"
+symbol = " "
+style = "bg:blue fg:base"
+
+[python]
+format = "[  $version ]($style)"
+symbol = " "
+style = "bg:blue fg:base"
+
+[rust]
+format = "[  $version ]($style)"
+symbol = " "
+style = "bg:blue fg:base"
+
+[golang]
+format = "[  $version ]($style)"
+symbol = " "
+style = "bg:blue fg:base"
+
+[java]
+format = "[  $version ]($style)"
+symbol = " "
+style = "bg:blue fg:base"
+
+# ==============================================================================
+# 时间（薰衣草紫色椭圆，彩虹条最右侧）
+# ==============================================================================
+[time]
+disabled = false
+format = "[  $time ]($style)"
+style = "bg:lavender fg:base"
+time_format = "%H:%M"
+
+# ==============================================================================
+# 命令耗时（右侧显示，超过 2 秒才出现）
+# ==============================================================================
+[cmd_duration]
+format = "[ $duration]($style)"
+style = "fg:overlay1"
+min_time = 2_000
+
+# ==============================================================================
+# 输入符号（彩虹条下方换行显示）
+# ==============================================================================
+[character]
+success_symbol = "[\u276f](green)"
+error_symbol = "[\u276f](red)"
