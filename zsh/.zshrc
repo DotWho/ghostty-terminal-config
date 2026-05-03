@@ -25,6 +25,8 @@ fpath=(/opt/homebrew/share/zsh-completions $fpath)
 autoload -Uz compinit && compinit
 # Tab 补全时显示候选菜单，连续按 Tab 可用光标在列表中移动选择
 zstyle ':completion:*' menu select
+# 补全大小写不敏感，输入 cd dow 可以补出 Downloads
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # ==============================================================================
 # Starship | 终端提示符
@@ -81,6 +83,8 @@ function y() {
 # 使用方法: 输入时自动出现灰色提示，按 → 或 Ctrl+F 接受
 # 注意: 依赖历史记录，上面的 HISTFILE 配置不能少
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# 建议策略: 优先匹配历史记录，没有则从补全系统获取建议
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # ==============================================================================
 # zsh-syntax-highlighting | 语法高亮
