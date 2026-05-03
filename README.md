@@ -30,7 +30,8 @@ macOS 下基于 Ghostty + Starship + zsh 插件的终端美化方案，从 iTerm
 | [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) | 历史命令自动建议 |
 | [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) | 命令语法高亮 |
 | [zsh-completions](https://github.com/zsh-users/zsh-completions) | Tab 补全增强 |
-| [JetBrainsMono Nerd Font](https://www.nerdfonts.com) | 终端字体（含图标） |
+| [Maple Mono NF](https://github.com/subframe7536/maple-font) | 终端字体（默认，中文显示优秀） |
+| [JetBrainsMono Nerd Font](https://www.nerdfonts.com) | 终端备选字体 |
 
 ## 一键安装
 
@@ -47,6 +48,7 @@ cd ghostty-terminal-config
 ### 1. 安装依赖
 
 ```bash
+brew install --cask font-maple-mono-nf
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask ghostty
 brew install starship fzf zoxide eza bat yazi zsh-autosuggestions zsh-syntax-highlighting zsh-completions

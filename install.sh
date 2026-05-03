@@ -16,6 +16,7 @@ if ! command -v brew &> /dev/null; then
 fi
 
 echo "==> 安装 Homebrew 依赖..."
+brew install --cask font-maple-mono-nf
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask ghostty
 brew install starship fzf zoxide eza bat yazi zsh-autosuggestions zsh-syntax-highlighting zsh-completions
