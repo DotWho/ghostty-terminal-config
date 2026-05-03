@@ -4,7 +4,7 @@ macOS 下基于 Ghostty + Starship + zsh 插件的终端美化方案，从 iTerm
 
 ## 效果
 
-- 彩虹条提示符（椭圆 + 箭头风格，Catppuccin Mocha 配色）
+- 彩虹条提示符（基于 Starship 官方 catppuccin-powerline 预设，启用换行显示）
 - 半透明毛玻璃窗口
 - 语法高亮、自动建议、模糊搜索
 
@@ -13,7 +13,7 @@ macOS 下基于 Ghostty + Starship + zsh 插件的终端美化方案，从 iTerm
 | 文件 | 说明 | 软链接目标 |
 |------|------|-----------|
 | `ghostty/config` | Ghostty 终端配置（字体、主题、窗口、光标） | `~/.config/ghostty/config` |
-| `starship/starship.toml` | Starship 彩虹条提示符配置 | `~/.config/starship.toml` |
+| `starship/starship.toml` | Starship 彩虹条提示符配置（官方预设 + 换行） | `~/.config/starship.toml` |
 | `zsh/.zshrc` | zsh 配置（插件、工具、别名、快捷键） | `~/.zshrc` |
 
 ## 依赖
@@ -40,6 +40,8 @@ cd ghostty-terminal-config
 ./install.sh
 ```
 
+安装脚本会自动备份已有配置到 `~/.config-backup/` 目录。
+
 ## 手动安装
 
 ### 1. 安装依赖
@@ -54,12 +56,26 @@ brew install starship fzf zoxide eza bat yazi zsh-autosuggestions zsh-syntax-hig
 
 ```bash
 mkdir -p ~/.config/ghostty
-ln -sf $(pwd)/ghostty/config ~/.config/ghostty/config
-ln -sf $(pwd)/starship/starship.toml ~/.config/starship.toml
-ln -sf $(pwd)/zsh/.zshrc ~/.zshrc
+ln -sf "$(pwd)/ghostty/config" ~/.config/ghostty/config
+ln -sf "$(pwd)/starship/starship.toml" ~/.config/starship.toml
+ln -sf "$(pwd)/zsh/.zshrc" ~/.zshrc
 ```
 
 ### 3. 重启 Ghostty 终端
+
+## Starship 预设说明
+
+彩虹条基于 `starship preset catppuccin-powerline` 官方预设，唯一改动：
+
+- `[line_break] disabled = false`：彩虹条一行，输入符号在下一行
+
+更新预设：
+
+```bash
+starship preset catppuccin-powerline -o starship/starship.toml
+```
+
+更新后需手动将 `[line_break]` 的 `disabled` 改回 `false`。
 
 ## 快捷键速查
 

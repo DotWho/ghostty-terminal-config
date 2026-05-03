@@ -83,8 +83,6 @@ function y() {
 # 使用方法: 输入时自动出现灰色提示，按 → 或 Ctrl+F 接受
 # 注意: 依赖历史记录，上面的 HISTFILE 配置不能少
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# 建议策略: 优先匹配历史记录，没有则从补全系统获取建议
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # ==============================================================================
 # zsh-syntax-highlighting | 语法高亮
