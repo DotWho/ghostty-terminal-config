@@ -35,7 +35,7 @@ macOS 下基于 Ghostty + Starship + zsh 插件的终端美化方案，从 iTerm
 ## 一键安装
 
 ```bash
-git clone https://github.com/你的用户名/ghostty-terminal-config.git
+git clone https://github.com/justhalfbit/ghostty-terminal-config.git
 cd ghostty-terminal-config
 ./install.sh
 ```
