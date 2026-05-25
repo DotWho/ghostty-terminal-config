@@ -10,11 +10,46 @@ macOS 下基于 Ghostty + Starship + zsh 插件的终端美化方案，从 iTerm
 
 ## 包含的配置文件
 
-| 文件 | 说明 | 软链接目标 |
-|------|------|-----------|
+| 文件 | 说明 | 安装位置 |
+|------|------|---------|
 | `ghostty/config` | Ghostty 终端配置（字体、主题、窗口、光标） | `~/.config/ghostty/config` |
 | `starship/starship.toml` | Starship 彩虹条提示符配置（官方预设 + 换行） | `~/.config/starship.toml` |
 | `zsh/.zshrc` | zsh 配置（插件、工具、别名、快捷键） | `~/.zshrc` |
+
+## 一键安装
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/justhalfbit/ghostty-terminal-config/main/install.sh)
+```
+
+安装前会询问确认，确认后自动执行：
+1. 通过 Homebrew 安装所有依赖
+2. 备份已有配置文件
+3. 下载并安装新配置
+
+## 备份与恢复
+
+安装脚本会自动将已有配置备份到 `~/.config-backup/<时间戳>/` 目录。
+
+备份文件对应关系：
+
+| 备份文件 | 原始位置 |
+|---------|---------|
+| `~/.config-backup/<时间戳>/.zshrc` | `~/.zshrc` |
+| `~/.config-backup/<时间戳>/ghostty-config` | `~/.config/ghostty/config` |
+| `~/.config-backup/<时间戳>/starship.toml` | `~/.config/starship.toml` |
+
+恢复命令：
+
+```bash
+# 查看备份目录（找到对应时间戳）
+ls ~/.config-backup/
+
+# 恢复（替换 <时间戳> 为实际目录名）
+cp ~/.config-backup/<时间戳>/.zshrc ~/.zshrc
+cp ~/.config-backup/<时间戳>/ghostty-config ~/.config/ghostty/config
+cp ~/.config-backup/<时间戳>/starship.toml ~/.config/starship.toml
+```
 
 ## 依赖
 
@@ -33,16 +68,6 @@ macOS 下基于 Ghostty + Starship + zsh 插件的终端美化方案，从 iTerm
 | [Maple Mono NF](https://github.com/subframe7536/maple-font) | 终端字体（默认，中文显示优秀） |
 | [JetBrainsMono Nerd Font](https://www.nerdfonts.com) | 终端备选字体 |
 
-## 一键安装
-
-```bash
-git clone https://github.com/justhalfbit/ghostty-terminal-config.git
-cd ghostty-terminal-config
-./install.sh
-```
-
-安装脚本会自动备份已有配置到 `~/.config-backup/` 目录。
-
 ## 手动安装
 
 ### 1. 安装依赖
@@ -54,13 +79,15 @@ brew install --cask ghostty
 brew install starship fzf zoxide eza bat yazi zsh-autosuggestions zsh-syntax-highlighting zsh-completions
 ```
 
-### 2. 创建软链接
+### 2. 下载配置文件
 
 ```bash
+git clone --depth 1 https://github.com/justhalfbit/ghostty-terminal-config.git /tmp/ghostty-config
 mkdir -p ~/.config/ghostty
-ln -sf "$(pwd)/ghostty/config" ~/.config/ghostty/config
-ln -sf "$(pwd)/starship/starship.toml" ~/.config/starship.toml
-ln -sf "$(pwd)/zsh/.zshrc" ~/.zshrc
+cp /tmp/ghostty-config/ghostty/config ~/.config/ghostty/config
+cp /tmp/ghostty-config/starship/starship.toml ~/.config/starship.toml
+cp /tmp/ghostty-config/zsh/.zshrc ~/.zshrc
+rm -rf /tmp/ghostty-config
 ```
 
 ### 3. 重启 Ghostty 终端
@@ -70,14 +97,6 @@ ln -sf "$(pwd)/zsh/.zshrc" ~/.zshrc
 彩虹条基于 `starship preset catppuccin-powerline` 官方预设，唯一改动：
 
 - `[line_break] disabled = false`：彩虹条一行，输入符号在下一行
-
-更新预设：
-
-```bash
-starship preset catppuccin-powerline -o starship/starship.toml
-```
-
-更新后需手动将 `[line_break]` 的 `disabled` 改回 `false`。
 
 ## 快捷键速查
 

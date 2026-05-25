@@ -22,7 +22,7 @@ setopt hist_ignore_space
 # 使用方法: 输入命令后按 Tab 键
 # 注意: fpath 必须在 compinit 之前，否则补全定义不会被扫描到
 fpath=(/opt/homebrew/share/zsh-completions $fpath)
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -u
 # Tab 补全时显示候选菜单，连续按 Tab 可用光标在列表中移动选择
 zstyle ':completion:*' menu select
 # 补全大小写不敏感，输入 cd dow 可以补出 Downloads
