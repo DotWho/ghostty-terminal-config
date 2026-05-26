@@ -118,6 +118,6 @@ rm -rf /tmp/ghostty-config
 | `ls` | `eza --icons --group-directories-first` |
 | `ll` | `eza -l --icons --sort=name` |
 | `lt` | `eza --tree --icons --level=2` |
-| `cat` | `bat --paging=never` |
+| `cat` | `bat --paging=never --style=plain` |
 | `y` | yazi 文件管理器（退出自动 cd） |
 | `z foo` | zoxide 智能跳转到包含 foo 的目录 |

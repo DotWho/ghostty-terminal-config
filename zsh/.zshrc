@@ -106,7 +106,7 @@ alias ls="eza --icons --group-directories-first"
 alias ll="eza -l --icons --sort=name"
 alias lt="eza --tree --icons --level=2"
 
-# bat | 替代 cat，支持语法高亮、行号
+# bat | 替代 cat，支持语法高亮
 # 使用方法: cat 文件名（实际调用 bat）
-# 注意: --paging=never 禁用分页，行为和原生 cat 一致
+# 注意: --paging=never 禁用分页，--style=plain 去掉行号等装饰，只保留语法高亮
 alias cat="bat --paging=never --style=plain"
