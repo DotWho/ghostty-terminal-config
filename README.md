@@ -80,20 +80,30 @@ brew install --cask ghostty
 brew install starship fzf zoxide eza bat yazi zsh-autosuggestions zsh-syntax-highlighting zsh-completions
 ```
 
-### 2. 下载并安装配置文件
+### 2. 下载配置文件
 
 ```bash
 git clone --depth 1 https://github.com/justhalfbit/ghostty-terminal-config.git /tmp/ghostty-config
+```
+
+### 3. 安装配置文件
+
+```bash
 mkdir -p ~/.config/ghostty
 cp /tmp/ghostty-config/ghostty/config ~/.config/ghostty/config
 cp /tmp/ghostty-config/starship/starship.toml ~/.config/starship.toml
 cat /tmp/ghostty-config/zsh/.zshrc >> ~/.zshrc
-rm -rf /tmp/ghostty-config
 ```
 
 > 注意：zsh 配置是追加到 `~/.zshrc` 尾部，不会覆盖已有内容。如果重复执行需手动去重。
 
-### 3. 重启 Ghostty 终端
+### 4. 清理并重启
+
+```bash
+rm -rf /tmp/ghostty-config
+```
+
+重启 Ghostty 终端生效。
 
 ## Starship 预设说明
 
