@@ -5,7 +5,6 @@
 # font-size: 字号
 # font-thicken: 字体加粗渲染，macOS Retina 屏上更清晰
 # adjust-cell-height: 行间距，0 为默认紧凑，可调大（如 10%、20%）增加行距
-# font-family = "JetBrainsMono Nerd Font"
 font-family = "Maple Mono NF"
 font-size = 13
 font-thicken = true
