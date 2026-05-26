@@ -24,8 +24,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/justhalfbit/ghostty-terminal
 
 安装前会询问确认，确认后自动执行：
 1. 通过 Homebrew 安装所有依赖
-2. 备份已有配置文件
-3. 下载并安装新配置
+2. 备份已有 Ghostty 和 Starship 配置文件
+3. 安装 Ghostty 和 Starship 配置（覆盖）
+4. 将 zsh 配置追加到 `~/.zshrc` 尾部（不覆盖用户已有内容）
 
 ## 备份与恢复
 
@@ -35,7 +36,6 @@ bash <(curl -fsSL https://raw.githubusercontent.com/justhalfbit/ghostty-terminal
 
 | 备份文件 | 原始位置 |
 |---------|---------|
-| `~/.config-backup/<时间戳>/.zshrc` | `~/.zshrc` |
 | `~/.config-backup/<时间戳>/ghostty-config` | `~/.config/ghostty/config` |
 | `~/.config-backup/<时间戳>/starship.toml` | `~/.config/starship.toml` |
 
@@ -46,10 +46,13 @@ bash <(curl -fsSL https://raw.githubusercontent.com/justhalfbit/ghostty-terminal
 ls ~/.config-backup/
 
 # 恢复（替换 <时间戳> 为实际目录名）
-cp ~/.config-backup/<时间戳>/.zshrc ~/.zshrc
 cp ~/.config-backup/<时间戳>/ghostty-config ~/.config/ghostty/config
 cp ~/.config-backup/<时间戳>/starship.toml ~/.config/starship.toml
 ```
+
+### 卸载 zsh 配置
+
+删除 `~/.zshrc` 中 `# >>> ghostty-terminal-config >>>` 到 `# <<< ghostty-terminal-config <<<` 之间的所有内容即可。
 
 ## 依赖
 
@@ -77,16 +80,18 @@ brew install --cask ghostty
 brew install starship fzf zoxide eza bat yazi zsh-autosuggestions zsh-syntax-highlighting zsh-completions
 ```
 
-### 2. 下载配置文件
+### 2. 下载并安装配置文件
 
 ```bash
 git clone --depth 1 https://github.com/justhalfbit/ghostty-terminal-config.git /tmp/ghostty-config
 mkdir -p ~/.config/ghostty
 cp /tmp/ghostty-config/ghostty/config ~/.config/ghostty/config
 cp /tmp/ghostty-config/starship/starship.toml ~/.config/starship.toml
-cp /tmp/ghostty-config/zsh/.zshrc ~/.zshrc
+cat /tmp/ghostty-config/zsh/.zshrc >> ~/.zshrc
 rm -rf /tmp/ghostty-config
 ```
+
+> 注意：zsh 配置是追加到 `~/.zshrc` 尾部，不会覆盖已有内容。如果重复执行需手动去重。
 
 ### 3. 重启 Ghostty 终端
 
