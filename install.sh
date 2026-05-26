@@ -70,8 +70,11 @@ fi
 # ==============================================================================
 echo "==> 安装 Homebrew 依赖..."
 brew install --cask font-maple-mono-nf
-brew install --cask font-jetbrains-mono-nerd-font
-brew install --cask ghostty
+if [ ! -d "/Applications/Ghostty.app" ]; then
+  brew install --cask ghostty
+else
+  echo "    Ghostty 已安装，跳过。"
+fi
 brew install starship fzf zoxide eza bat yazi zsh-autosuggestions zsh-syntax-highlighting zsh-completions
 
 # ==============================================================================
