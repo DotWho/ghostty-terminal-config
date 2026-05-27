@@ -43,7 +43,6 @@ eval "$(starship init zsh)"
 # 使用方法:
 #   Ctrl+R  模糊搜索历史命令
 #   Ctrl+T  模糊搜索当前目录下的文件
-#   Alt+C   模糊搜索目录并 cd 进入
 #   命令 **<Tab>  触发 fzf 补全，如: cd **<Tab>、kill **<Tab>
 source <(fzf --zsh)
 

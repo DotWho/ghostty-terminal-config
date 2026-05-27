@@ -118,7 +118,6 @@ rm -rf /tmp/ghostty-config
 | `Ctrl+F` | 接受自动建议 |
 | `Ctrl+R` | fzf 模糊搜索历史命令 |
 | `Ctrl+T` | fzf 模糊搜索文件 |
-| `Alt+C` | fzf 模糊搜索目录并 cd |
 | `Tab` | 补全，连续按在候选列表中移动 |
 
 ## 别名速查
