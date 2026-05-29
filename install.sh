@@ -77,7 +77,7 @@ if [ ! -d "/Applications/Ghostty.app" ]; then
 else
   echo "    Ghostty 已安装，跳过。"
 fi
-brew install starship fzf zoxide eza bat yazi zsh-autosuggestions zsh-syntax-highlighting zsh-completions
+brew install starship eza zsh-autosuggestions zsh-syntax-highlighting zsh-completions
 
 # ==============================================================================
 # 下载配置文件
